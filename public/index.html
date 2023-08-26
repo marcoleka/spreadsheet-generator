@@ -1,0 +1,45 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CSV Generator</title>
+  <style>
+    .column-input {
+      display: flex;
+      gap: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>CSV Generator</h1>
+  <form id="generator-form" action="/generate" method="post">
+    <button type="button" id="add-column">+</button>
+    <button type="submit">Generate CSV</button>
+    <label>Number</label>
+    <input type="number" name="number" step="1" min="1">
+    <div id="columns-container">
+      <div class="column-template">
+        <div class="column-input">
+          <input type="text" name="columnNames[]" placeholder="Column Name" required>
+          <select name="columnTypes[]" required>
+            <option value="" disabled selected>Select Type</option>
+            <option value="string">String</option>
+            <option value="number">Number</option>
+            <option value="date">Date</option>
+            <!-- Add more options for other data types -->
+          </select>
+          <input type="number" name="columnLengths[]" step="1" min="1">
+          <button type="button" class="remove-column">-</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <a href="/download">Download CSV</a>
+
+  <script src="js/index.js"></script>
+</body>
+
+</html>
